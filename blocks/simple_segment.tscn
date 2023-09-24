@@ -1,0 +1,65 @@
+[gd_scene load_steps=9 format=3 uid="uid://dh1nvktbbv3fj"]
+
+[ext_resource type="Script" path="res://blocks/simple_segment.gd" id="1_nr1d2"]
+
+[sub_resource type="Gradient" id="Gradient_koqmo"]
+colors = PackedColorArray(0, 0, 0, 1, 1, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ix7ox"]
+gradient = SubResource("Gradient_koqmo")
+fill = 2
+fill_from = Vector2(0.5, 0.5)
+metadata/_snap_enabled = true
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wvx21"]
+size = Vector2(63, 63)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j5s2m"]
+size = Vector2(2, 2)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jjiko"]
+size = Vector2(2, 2)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ohcu2"]
+size = Vector2(2, 2)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qdf4t"]
+size = Vector2(2, 2)
+
+[node name="SimpleSegment" type="Area2D"]
+script = ExtResource("1_nr1d2")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("GradientTexture2D_ix7ox")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_wvx21")
+one_way_collision_margin = 0.0
+
+[node name="ShapeCast2D_1" type="ShapeCast2D" parent="."]
+position = Vector2(33, -30)
+shape = SubResource("RectangleShape2D_j5s2m")
+target_position = Vector2(2.08165e-12, 60)
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="ShapeCast2D_2" type="ShapeCast2D" parent="."]
+position = Vector2(-33, -30)
+shape = SubResource("RectangleShape2D_jjiko")
+target_position = Vector2(2.08165e-12, 60)
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="ShapeCast2D_3" type="ShapeCast2D" parent="."]
+position = Vector2(-30, -33)
+shape = SubResource("RectangleShape2D_ohcu2")
+target_position = Vector2(60, 2.08165e-12)
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="ShapeCast2D_4" type="ShapeCast2D" parent="."]
+position = Vector2(-30, 33)
+shape = SubResource("RectangleShape2D_qdf4t")
+target_position = Vector2(60, 2.08165e-12)
+collide_with_areas = true
+collide_with_bodies = false

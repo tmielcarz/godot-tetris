@@ -1,0 +1,71 @@
+[gd_scene load_steps=12 format=3 uid="uid://bv6jl0eqjak4n"]
+
+[ext_resource type="Script" path="res://board.gd" id="1_bmftx"]
+[ext_resource type="PackedScene" uid="uid://d3lxiec8frvuy" path="res://blocks/l_block_left.tscn" id="2_nww57"]
+
+[sub_resource type="Gradient" id="Gradient_lkwvs"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_0kisl"]
+gradient = SubResource("Gradient_lkwvs")
+width = 960
+height = 32
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dfdln"]
+size = Vector2(960, 32)
+
+[sub_resource type="Gradient" id="Gradient_ncnq0"]
+offsets = PackedFloat32Array(1, 1, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_2ikfm"]
+gradient = SubResource("Gradient_ncnq0")
+width = 32
+height = 992
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qqqy0"]
+size = Vector2(32, 990)
+
+[sub_resource type="Gradient" id="Gradient_2lxoa"]
+offsets = PackedFloat32Array(1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_4kk60"]
+gradient = SubResource("Gradient_2lxoa")
+width = 32
+height = 992
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1sf4b"]
+size = Vector2(32, 990)
+
+[node name="Board" type="Node2D"]
+script = ExtResource("1_bmftx")
+l_block_left = ExtResource("2_nww57")
+
+[node name="Floor" type="Area2D" parent="."]
+position = Vector2(592, 1024)
+
+[node name="Sprite2D" type="Sprite2D" parent="Floor"]
+texture = SubResource("GradientTexture2D_0kisl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+position = Vector2(2.08165e-12, 2.08165e-12)
+shape = SubResource("RectangleShape2D_dfdln")
+
+[node name="LeftWall" type="Area2D" parent="."]
+position = Vector2(96, 512)
+
+[node name="Sprite2D" type="Sprite2D" parent="LeftWall"]
+texture = SubResource("GradientTexture2D_2ikfm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftWall"]
+shape = SubResource("RectangleShape2D_qqqy0")
+
+[node name="RightWall" type="Area2D" parent="."]
+position = Vector2(1088, 512)
+
+[node name="Sprite2D" type="Sprite2D" parent="RightWall"]
+texture = SubResource("GradientTexture2D_4kk60")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightWall"]
+shape = SubResource("RectangleShape2D_1sf4b")

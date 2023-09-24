@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://c5wa5g18fnlo2"]
+
+[sub_resource type="Gradient" id="Gradient_wxush"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 1, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_jwfir"]
+gradient = SubResource("Gradient_wxush")
+fill = 2
+fill_from = Vector2(0.5, 0.5)
+metadata/_snap_enabled = true
+
+[node name="Segment" type="Sprite2D"]
+texture = SubResource("GradientTexture2D_jwfir")

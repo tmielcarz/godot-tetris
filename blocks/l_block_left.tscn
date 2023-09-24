@@ -1,0 +1,41 @@
+[gd_scene load_steps=3 format=3 uid="uid://d3lxiec8frvuy"]
+
+[ext_resource type="PackedScene" uid="uid://dh1nvktbbv3fj" path="res://blocks/simple_segment.tscn" id="1_67tr7"]
+[ext_resource type="Script" path="res://blocks/l_block_left.gd" id="1_cjujc"]
+
+[node name="LBlockLeft" type="Node2D"]
+script = ExtResource("1_cjujc")
+
+[node name="SimpleSegment1" parent="." instance=ExtResource("1_67tr7")]
+position = Vector2(-64, 0)
+segment_id = 1
+top_enabled = true
+bottom_enabled = true
+left_enabled = true
+
+[node name="SimpleSegment2" parent="." instance=ExtResource("1_67tr7")]
+segment_id = 2
+top_enabled = true
+bottom_enabled = true
+
+[node name="SimpleSegment3" parent="." instance=ExtResource("1_67tr7")]
+position = Vector2(64, 0)
+segment_id = 3
+top_enabled = true
+right_enabled = true
+
+[node name="SimpleSegment4" parent="." instance=ExtResource("1_67tr7")]
+position = Vector2(64, 64)
+segment_id = 4
+right_enabled = true
+bottom_enabled = true
+left_enabled = true
+
+[connection signal="shape_enter" from="SimpleSegment1" to="." method="_on_simple_segment_shape_enter"]
+[connection signal="shape_exit" from="SimpleSegment1" to="." method="_on_simple_segment_shape_exit"]
+[connection signal="shape_enter" from="SimpleSegment2" to="." method="_on_simple_segment_shape_enter"]
+[connection signal="shape_exit" from="SimpleSegment2" to="." method="_on_simple_segment_shape_exit"]
+[connection signal="shape_enter" from="SimpleSegment3" to="." method="_on_simple_segment_shape_enter"]
+[connection signal="shape_exit" from="SimpleSegment3" to="." method="_on_simple_segment_shape_exit"]
+[connection signal="shape_enter" from="SimpleSegment4" to="." method="_on_simple_segment_shape_enter"]
+[connection signal="shape_exit" from="SimpleSegment4" to="." method="_on_simple_segment_shape_exit"]
