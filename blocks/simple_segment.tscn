@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dh1nvktbbv3fj"]
+[gd_scene load_steps=10 format=3 uid="uid://dh1nvktbbv3fj"]
 
 [ext_resource type="Script" path="res://blocks/simple_segment.gd" id="1_nr1d2"]
 
@@ -13,6 +13,9 @@ metadata/_snap_enabled = true
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wvx21"]
 size = Vector2(63, 63)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dbjhw"]
+size = Vector2(60, 2)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j5s2m"]
 size = Vector2(2, 2)
@@ -35,6 +38,13 @@ texture = SubResource("GradientTexture2D_ix7ox")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_wvx21")
 one_way_collision_margin = 0.0
+
+[node name="ShapeCast2D_0" type="ShapeCast2D" parent="."]
+position = Vector2(2.08165e-12, -30)
+shape = SubResource("RectangleShape2D_dbjhw")
+target_position = Vector2(2.08165e-12, 60)
+collide_with_areas = true
+collide_with_bodies = false
 
 [node name="ShapeCast2D_1" type="ShapeCast2D" parent="."]
 position = Vector2(33, -30)

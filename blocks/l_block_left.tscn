@@ -30,12 +30,3 @@ segment_id = 4
 right_enabled = true
 bottom_enabled = true
 left_enabled = true
-
-[connection signal="shape_enter" from="SimpleSegment1" to="." method="_on_simple_segment_shape_enter"]
-[connection signal="shape_exit" from="SimpleSegment1" to="." method="_on_simple_segment_shape_exit"]
-[connection signal="shape_enter" from="SimpleSegment2" to="." method="_on_simple_segment_shape_enter"]
-[connection signal="shape_exit" from="SimpleSegment2" to="." method="_on_simple_segment_shape_exit"]
-[connection signal="shape_enter" from="SimpleSegment3" to="." method="_on_simple_segment_shape_enter"]
-[connection signal="shape_exit" from="SimpleSegment3" to="." method="_on_simple_segment_shape_exit"]
-[connection signal="shape_enter" from="SimpleSegment4" to="." method="_on_simple_segment_shape_enter"]
-[connection signal="shape_exit" from="SimpleSegment4" to="." method="_on_simple_segment_shape_exit"]
