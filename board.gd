@@ -28,6 +28,19 @@ func _prepare_locked_segments():
 			locked_segments[i].append([])
 			locked_segments[i][j] = 0
 
+func _insert_locked_segments(segment_position):
+	var x = int((segment_position.x + 480) / 64)
+	var y = -int((segment_position.y + 32) / 64)
+	locked_segments[x][y] = 1
+	
+func _check_locked_segments():
+	for i in range(16):
+		var count = 0
+		for j in range(16):
+			count += locked_segments[j][i]
+		if count == 16:
+			print("Line " + str(i) + " is full")
+
 func _print_locked_segments():
 	print("---")
 	for i in range(16, 0, -1):
@@ -42,26 +55,19 @@ func _create_new_block():
 	current_block.connect("block_locked", _on_block_locked)
 	add_child(current_block)
 
-func _calculate_idx(position):
-	var x = int((position.x + 480) / 64)
-	var y = -int((position.y + 32) / 64)	
-	return Vector2(x, y)
-
 func _on_block_locked():
-	var base_position = current_block.position
-	var base_global_position = current_block.global_position
 	for segment in current_block.segments:
-		var segment_global_position = segment.global_position
-		var diff_position = segment_global_position - base_global_position
 		var new_segment = locked_segment.instantiate()
-		new_segment.position = base_position + diff_position
-		var idx = _calculate_idx(new_segment.position)
-		locked_segments[idx.x][idx.y] = 1
+		var diff_position = segment.global_position - current_block.global_position
+		new_segment.position = current_block.position + diff_position
+		_insert_locked_segments(new_segment.position)
 		add_child(new_segment)
 
 	_print_locked_segments()
+	_check_locked_segments()
 
 	remove_child(current_block)
+	
 	_create_new_block()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
