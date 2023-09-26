@@ -2,6 +2,7 @@ extends Node2D
 
 @export var l_block_left: PackedScene
 @export var z_block_left: PackedScene
+@export var i_block: PackedScene
 
 var blocks = []
 
@@ -13,10 +14,11 @@ var next_block
 func _ready():
 	blocks.append(l_block_left)
 	blocks.append(z_block_left)
+	blocks.append(i_block)
 	_create_new_block()
 
 func _create_new_block():
-	current_block = blocks[randi_range(0, 1)].instantiate()	
+	current_block = blocks[randi_range(0, blocks.size() - 1)].instantiate()	
 	current_block.position = Vector2(592, 32)
 	current_block.connect("block_locked", _on_block_locked)
 	add_child(current_block)

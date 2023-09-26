@@ -1,8 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://bv6jl0eqjak4n"]
+[gd_scene load_steps=14 format=3 uid="uid://bv6jl0eqjak4n"]
 
 [ext_resource type="Script" path="res://board.gd" id="1_bmftx"]
 [ext_resource type="PackedScene" uid="uid://d3lxiec8frvuy" path="res://blocks/l_block_left.tscn" id="2_nww57"]
 [ext_resource type="PackedScene" uid="uid://bscjijut321pq" path="res://blocks/z_block_left.tscn" id="3_5ispg"]
+[ext_resource type="PackedScene" uid="uid://m2x4umobuv65" path="res://blocks/i_block.tscn" id="4_uc2rf"]
 
 [sub_resource type="Gradient" id="Gradient_lkwvs"]
 interpolation_mode = 1
@@ -43,6 +44,7 @@ size = Vector2(32, 990)
 script = ExtResource("1_bmftx")
 l_block_left = ExtResource("2_nww57")
 z_block_left = ExtResource("3_5ispg")
+i_block = ExtResource("4_uc2rf")
 
 [node name="Floor" type="Area2D" parent="."]
 position = Vector2(592, 1024)

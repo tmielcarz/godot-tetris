@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://m2x4umobuv65"]
+
+[ext_resource type="Script" path="res://blocks/i_block.gd" id="1_h7eiu"]
+[ext_resource type="PackedScene" uid="uid://dh1nvktbbv3fj" path="res://blocks/simple_segment.tscn" id="2_tbpdy"]
+
+[node name="IBlock" type="Node2D"]
+script = ExtResource("1_h7eiu")
+
+[node name="SimpleSegment1" parent="." instance=ExtResource("2_tbpdy")]
+position = Vector2(-64, 0)
+top_enabled = true
+bottom_enabled = true
+left_enabled = true
+
+[node name="SimpleSegment2" parent="." instance=ExtResource("2_tbpdy")]
+top_enabled = true
+bottom_enabled = true
+
+[node name="SimpleSegment3" parent="." instance=ExtResource("2_tbpdy")]
+position = Vector2(64, 0)
+top_enabled = true
+bottom_enabled = true
+
+[node name="SimpleSegment4" parent="." instance=ExtResource("2_tbpdy")]
+position = Vector2(128, 0)
+top_enabled = true
+right_enabled = true
+bottom_enabled = true
