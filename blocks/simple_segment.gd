@@ -1,7 +1,5 @@
 extends Area2D
 
-@export var segment_id = 0
-
 @export var top_enabled = false
 @export var right_enabled = false
 @export var bottom_enabled = false

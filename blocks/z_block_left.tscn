@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://bscjijut321pq"]
+
+[ext_resource type="Script" path="res://blocks/z_block_left.gd" id="1_8bjx7"]
+[ext_resource type="PackedScene" uid="uid://dh1nvktbbv3fj" path="res://blocks/simple_segment.tscn" id="2_pglcd"]
+
+[node name="ZBlockLeft" type="Node2D"]
+script = ExtResource("1_8bjx7")
+
+[node name="SimpleSegment1" parent="." instance=ExtResource("2_pglcd")]
+position = Vector2(-64, 0)
+top_enabled = true
+bottom_enabled = true
+left_enabled = true
+
+[node name="SimpleSegment2" parent="." instance=ExtResource("2_pglcd")]
+top_enabled = true
+right_enabled = true
+
+[node name="SimpleSegment3" parent="." instance=ExtResource("2_pglcd")]
+position = Vector2(0, 64)
+bottom_enabled = true
+left_enabled = true
+
+[node name="SimpleSegment4" parent="." instance=ExtResource("2_pglcd")]
+position = Vector2(64, 64)
+top_enabled = true
+right_enabled = true
+bottom_enabled = true

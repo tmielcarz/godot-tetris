@@ -8,25 +8,21 @@ script = ExtResource("1_cjujc")
 
 [node name="SimpleSegment1" parent="." instance=ExtResource("1_67tr7")]
 position = Vector2(-64, 0)
-segment_id = 1
 top_enabled = true
 bottom_enabled = true
 left_enabled = true
 
 [node name="SimpleSegment2" parent="." instance=ExtResource("1_67tr7")]
-segment_id = 2
 top_enabled = true
 bottom_enabled = true
 
 [node name="SimpleSegment3" parent="." instance=ExtResource("1_67tr7")]
 position = Vector2(64, 0)
-segment_id = 3
 top_enabled = true
 right_enabled = true
 
 [node name="SimpleSegment4" parent="." instance=ExtResource("1_67tr7")]
 position = Vector2(64, 64)
-segment_id = 4
 right_enabled = true
 bottom_enabled = true
 left_enabled = true
