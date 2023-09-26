@@ -42,7 +42,7 @@ func _process(delta):
 
 func _lock_block():
 	locked = true
-	self.position.y = 64 * round(self.position.y / 64) + 16
+	self.position.y = round(self.position.y / 32) * 32
 	block_locked.emit()
 	
 func _is_rotation_valid():

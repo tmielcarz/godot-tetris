@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://bdglbdtnc0v8e"]
+
+[sub_resource type="Gradient" id="Gradient_sv01q"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 1, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_b437h"]
+gradient = SubResource("Gradient_sv01q")
+fill = 2
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 1)
+metadata/_snap_enabled = true
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o22mc"]
+size = Vector2(63, 63)
+
+[node name="LockedSegment" type="Area2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("GradientTexture2D_b437h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_o22mc")
+one_way_collision_margin = 0.0
