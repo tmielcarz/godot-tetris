@@ -20,8 +20,11 @@ func _ready():
 	blocks.append(l_block_left)
 	blocks.append(z_block_left)
 	blocks.append(i_block)
+		
+func start_level():
 	_prepare_locked_segments()
 	_create_new_block()
+	_activate_next_block()
 
 func _prepare_locked_segments():
 	for i in range(16):
@@ -43,7 +46,7 @@ func _check_locked_segments():
 			count += value
 		if count == 16:
 			_remove_filled_line(i)
-			line_removed.emit()
+			line_removed.emit() # TODO dodac punkty, wywolac animacje
 
 func _move_locked_segments(line):
 	var found = false
@@ -84,11 +87,18 @@ func _print_locked_segments():
 			line += value
 		print(line)
 
-func _create_new_block():
-	current_block = blocks[randi_range(0, blocks.size() - 1)].instantiate()	
+func _activate_next_block():
+	current_block = next_block
 	current_block.position = Vector2(32, -992)
 	current_block.connect("block_locked", _on_block_locked)
-	add_child(current_block)
+	current_block.locked = false
+	_create_new_block()
+
+func _create_new_block():
+	next_block = blocks[randi_range(0, blocks.size() - 1)].instantiate()
+	next_block.position = Vector2(-800, -850)
+	next_block.locked = true
+	add_child(next_block)
 
 func _on_block_locked():
 	for segment in current_block.segments:
@@ -104,7 +114,8 @@ func _on_block_locked():
 	while _update_board(): pass
 	# _print_locked_segments()
 	
-	_create_new_block()
+	# TODO wyzwalane sygnalem po zakonczeniu animacji
+	_activate_next_block()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
