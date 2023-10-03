@@ -20,26 +20,27 @@ signal block_locked
 func _process(delta):
 	if !locked && !paused:
 		var velocity = Vector2.ZERO
-		
+
 		var actual_speed = speed
-		
-		if Input.is_action_just_pressed("move_right") && _is_right_allowed():
-			velocity.x += 64
-			
-		if Input.is_action_just_pressed("move_left") && _is_left_allowed():
-			velocity.x -= 64
-					
-		if Input.is_action_just_pressed("rotate"):
-			_try_rotate_block()
-			
+
 		if Input.is_action_pressed("move_down"):
 			actual_speed = 5 * speed
-			
+
 		if _is_down_allowed():
 			velocity.y += actual_speed * delta
 		else:
+			print("down not allowed")
 			_lock_block()
-			
+
+		if Input.is_action_just_pressed("move_right") && _is_right_allowed():
+			velocity.x += 64
+
+		if Input.is_action_just_pressed("move_left") && _is_left_allowed():
+			velocity.x -= 64
+
+		if Input.is_action_just_pressed("rotate"):
+			_try_rotate_block()
+
 		position += velocity
 
 func _lock_block():
@@ -63,7 +64,6 @@ func _try_rotate_block():
 		if rotation_direction == 4:
 			rotation_direction = 0
 	else:
-		print("rotation reverted")
 		self.rotate(-PI / 2)
 		
 
