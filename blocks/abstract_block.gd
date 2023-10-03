@@ -1,8 +1,10 @@
 extends Node2D
 
-var speed = 50
+var speed
 
 var locked = false
+
+var paused = false
 
 var left_side = []
 var right_side = []
@@ -16,7 +18,7 @@ signal block_locked
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if !locked:
+	if !locked && !paused:
 		var velocity = Vector2.ZERO
 		
 		var actual_speed = speed

@@ -5,28 +5,34 @@ extends Node2D
 @export var z_block_left: PackedScene
 @export var i_block: PackedScene
 
-var blocks = []
+var blocks = {}
+
+var current_speed
 
 var current_block
 
-var next_block
+var next_block_id
 
-var locked_segments = []
+var locked_segments
 
 signal line_removed
 
+signal next_block_drawed(block_name)
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	blocks.append(l_block_left)
-	blocks.append(z_block_left)
-	blocks.append(i_block)
-		
+	blocks[0] = l_block_left
+	blocks[1] = z_block_left
+	blocks[2] = i_block
+
 func start_level():
+	current_speed = 50
 	_prepare_locked_segments()
-	_create_new_block()
-	_activate_next_block()
+	_draw_next_block()
+	_activate_current_block()
 
 func _prepare_locked_segments():
+	locked_segments = []
 	for i in range(16):
 		locked_segments.append([])
 		for j in range(16):
@@ -37,7 +43,7 @@ func _insert_locked_segments(segment):
 	var x = int((segment.position.x + 480) / 64)
 	var y = -int((segment.position.y + 32) / 64)
 	locked_segments[x][y] = segment
-	
+
 func _check_locked_segments():
 	for i in range(16):
 		var count = 0
@@ -47,6 +53,7 @@ func _check_locked_segments():
 		if count == 16:
 			_remove_filled_line(i)
 			line_removed.emit() # TODO dodac punkty, wywolac animacje
+			current_speed += 10
 
 func _move_locked_segments(line):
 	var found = false
@@ -56,7 +63,7 @@ func _move_locked_segments(line):
 			if locked_segments[col][row - 1] != null:
 				locked_segments[col][row - 1].position.y += 64
 				found = true
-			
+
 	for col in range(16):
 		locked_segments[col][15] = null
 		
@@ -70,7 +77,7 @@ func _update_board():
 			count += value
 		if count == 16:
 			return _move_locked_segments(row)
-	
+
 	return false
 
 func _remove_filled_line(line):
@@ -78,27 +85,17 @@ func _remove_filled_line(line):
 		remove_child(locked_segments[j][line])
 		locked_segments[j][line] = null
 
-func _print_locked_segments():
-	print("---")
-	for i in range(16, 0, -1):
-		var line = ""
-		for j in range(16):
-			var value = "1 " if locked_segments[j][i - 1] != null else "0 "
-			line += value
-		print(line)
-
-func _activate_next_block():
-	current_block = next_block
+func _activate_current_block():
+	current_block = blocks[next_block_id].instantiate()
 	current_block.position = Vector2(32, -992)
 	current_block.connect("block_locked", _on_block_locked)
-	current_block.locked = false
-	_create_new_block()
+	current_block.speed = current_speed
+	add_child(current_block)
+	_draw_next_block()
 
-func _create_new_block():
-	next_block = blocks[randi_range(0, blocks.size() - 1)].instantiate()
-	next_block.position = Vector2(-800, -850)
-	next_block.locked = true
-	add_child(next_block)
+func _draw_next_block():
+	next_block_id = randi_range(0, blocks.size() - 1)
+	next_block_drawed.emit(blocks[next_block_id]._bundled.names[0])
 
 func _on_block_locked():
 	for segment in current_block.segments:
@@ -112,12 +109,14 @@ func _on_block_locked():
 	
 	_check_locked_segments()
 	while _update_board(): pass
-	# _print_locked_segments()
-	
+
 	# TODO wyzwalane sygnalem po zakonczeniu animacji
-	_activate_next_block()
+	_activate_current_block()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	pass
 
+func _on_main_game_paused_change(state):
+	if current_block != null:
+		current_block.paused = state
