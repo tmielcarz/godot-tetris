@@ -1,15 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://co2wsjk020yrv"]
+[gd_scene load_steps=6 format=3 uid="uid://co2wsjk020yrv"]
 
 [ext_resource type="Script" path="res://hud.gd" id="1_1dae4"]
 [ext_resource type="PackedScene" uid="uid://d3lxiec8frvuy" path="res://blocks/l_block_left.tscn" id="2_o780w"]
 [ext_resource type="PackedScene" uid="uid://bscjijut321pq" path="res://blocks/z_block_left.tscn" id="3_ic87h"]
 [ext_resource type="PackedScene" uid="uid://m2x4umobuv65" path="res://blocks/i_block.tscn" id="4_v14l5"]
+[ext_resource type="PackedScene" uid="uid://6huhus3je8yf" path="res://blocks/square_block.tscn" id="5_dwfmb"]
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_1dae4")
 l_block_left = ExtResource("2_o780w")
 z_block_left = ExtResource("3_ic87h")
 i_block = ExtResource("4_v14l5")
+square_block = ExtResource("5_dwfmb")
 
 [node name="ScoreLabel" type="Label" parent="."]
 offset_top = 600.0

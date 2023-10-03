@@ -5,6 +5,7 @@ signal start_game
 @export var l_block_left: PackedScene
 @export var z_block_left: PackedScene
 @export var i_block: PackedScene
+@export var square_block: PackedScene
 
 var blocks = {}
 
@@ -15,10 +16,11 @@ func _ready():
 	blocks[l_block_left._bundled.names[0]] = l_block_left
 	blocks[z_block_left._bundled.names[0]] = z_block_left
 	blocks[i_block._bundled.names[0]] = i_block
+	blocks[square_block._bundled.names[0]] = square_block
 	$PauseLabel.hide()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	pass
 
 func update_score(score):

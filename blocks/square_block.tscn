@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://6huhus3je8yf"]
+
+[ext_resource type="Script" path="res://blocks/square_block.gd" id="1_ho14n"]
+[ext_resource type="PackedScene" uid="uid://dh1nvktbbv3fj" path="res://blocks/simple_segment.tscn" id="1_kq0rp"]
+
+[node name="SquareBlock" type="Node2D"]
+script = ExtResource("1_ho14n")
+
+[node name="SimpleSegment1" parent="." instance=ExtResource("1_kq0rp")]
+top_enabled = true
+left_enabled = true
+
+[node name="SimpleSegment2" parent="." instance=ExtResource("1_kq0rp")]
+position = Vector2(64, 0)
+top_enabled = true
+right_enabled = true
+
+[node name="SimpleSegment3" parent="." instance=ExtResource("1_kq0rp")]
+position = Vector2(64, 64)
+right_enabled = true
+bottom_enabled = true
+
+[node name="SimpleSegment4" parent="." instance=ExtResource("1_kq0rp")]
+position = Vector2(0, 64)
+bottom_enabled = true
+left_enabled = true
