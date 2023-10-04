@@ -5,6 +5,7 @@ signal start_game
 @export var l_block_left: PackedScene
 @export var z_block_left: PackedScene
 @export var i_block: PackedScene
+@export var t_block: PackedScene
 @export var square_block: PackedScene
 
 var blocks = {}
@@ -16,6 +17,7 @@ func _ready():
 	blocks[l_block_left._bundled.names[0]] = l_block_left
 	blocks[z_block_left._bundled.names[0]] = z_block_left
 	blocks[i_block._bundled.names[0]] = i_block
+	blocks[t_block._bundled.names[0]] = t_block
 	blocks[square_block._bundled.names[0]] = square_block
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

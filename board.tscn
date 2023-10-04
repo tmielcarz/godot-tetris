@@ -1,10 +1,11 @@
-[gd_scene load_steps=16 format=3 uid="uid://bv6jl0eqjak4n"]
+[gd_scene load_steps=17 format=3 uid="uid://bv6jl0eqjak4n"]
 
 [ext_resource type="Script" path="res://board.gd" id="1_bmftx"]
 [ext_resource type="PackedScene" uid="uid://bdglbdtnc0v8e" path="res://blocks/locked_segment.tscn" id="2_h12aj"]
 [ext_resource type="PackedScene" uid="uid://d3lxiec8frvuy" path="res://blocks/l_block_left.tscn" id="2_nww57"]
 [ext_resource type="PackedScene" uid="uid://bscjijut321pq" path="res://blocks/z_block_left.tscn" id="3_5ispg"]
 [ext_resource type="PackedScene" uid="uid://m2x4umobuv65" path="res://blocks/i_block.tscn" id="4_uc2rf"]
+[ext_resource type="PackedScene" uid="uid://c3yj8o1tbgmbp" path="res://blocks/t_block.tscn" id="6_h7h6v"]
 [ext_resource type="PackedScene" uid="uid://6huhus3je8yf" path="res://blocks/square_block.tscn" id="6_ujkpl"]
 
 [sub_resource type="Gradient" id="Gradient_lkwvs"]
@@ -48,6 +49,7 @@ locked_segment = ExtResource("2_h12aj")
 l_block_left = ExtResource("2_nww57")
 z_block_left = ExtResource("3_5ispg")
 i_block = ExtResource("4_uc2rf")
+t_block = ExtResource("6_h7h6v")
 square_block = ExtResource("6_ujkpl")
 
 [node name="Floor" type="Area2D" parent="."]

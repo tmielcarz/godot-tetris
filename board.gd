@@ -4,6 +4,7 @@ extends Node2D
 @export var l_block_left: PackedScene
 @export var z_block_left: PackedScene
 @export var i_block: PackedScene
+@export var t_block: PackedScene
 @export var square_block: PackedScene
 
 var blocks = {}
@@ -27,7 +28,8 @@ func _ready():
 	blocks[0] = l_block_left
 	blocks[1] = z_block_left
 	blocks[2] = i_block
-	blocks[3] = square_block
+	blocks[3] = t_block
+	blocks[4] = square_block
 
 func start_level():
 	current_speed = 50

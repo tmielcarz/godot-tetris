@@ -4,7 +4,7 @@ func _ready():
 	segments.append_array([$SimpleSegment1, $SimpleSegment2, $SimpleSegment3, $SimpleSegment4])
 	sides.append_array([
 		[[1, 2], [4, 2]], 
-		[[1, 4], [2, 4], [4, 4]],
+		[[1, 4], [3, 4], [4, 4]],
 		[[3, 1], [4, 1]],
 		[[1, 3], [2, 3], [3, 3]],
 	])

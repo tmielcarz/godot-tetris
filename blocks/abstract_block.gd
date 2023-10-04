@@ -6,9 +6,7 @@ var locked = false
 
 var paused = false
 
-var left_side = []
-var right_side = []
-var down_side = []
+var sides = []
 
 var rotation_direction = 0
 
@@ -74,10 +72,10 @@ func _is_allowed(segments_def):
 	return true	
 
 func _is_left_allowed():
-	return _is_allowed(left_side[rotation_direction])
+	return _is_allowed(sides[rotation_direction])
 
 func _is_right_allowed():
-	return _is_allowed(right_side[rotation_direction])
+	return _is_allowed(sides[(rotation_direction + 2) % 4])
 	
 func _is_down_allowed():
-	return _is_allowed(down_side[rotation_direction])
+	return _is_allowed(sides[(rotation_direction + 1) % 4])
