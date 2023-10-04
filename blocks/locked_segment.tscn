@@ -1,4 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://bdglbdtnc0v8e"]
+[gd_scene load_steps=5 format=3 uid="uid://bdglbdtnc0v8e"]
+
+[ext_resource type="Script" path="res://blocks/locked_segment.gd" id="1_via8k"]
 
 [sub_resource type="Gradient" id="Gradient_sv01q"]
 colors = PackedColorArray(0, 0, 0, 1, 0, 1, 0, 1)
@@ -14,6 +16,7 @@ metadata/_snap_enabled = true
 size = Vector2(63, 63)
 
 [node name="LockedSegment" type="Area2D"]
+script = ExtResource("1_via8k")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = SubResource("GradientTexture2D_b437h")

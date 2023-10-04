@@ -5,6 +5,9 @@ extends Area2D
 @export var bottom_enabled = false
 @export var left_enabled = false
 
+var pos_x = 0
+var pos_y = 0
+
 var shapes = []
 
 # Called when the node enters the scene tree for the first time.
@@ -18,7 +21,12 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-	pass
+	var diff_position = self.global_position - get_parent().global_position
+	var segment_position = get_parent().position + diff_position
+	pos_x = int(segment_position.x + 32) / 64 + 7
+	pos_y = int(segment_position.y) / 64 * -1
+			
+
 
 
 

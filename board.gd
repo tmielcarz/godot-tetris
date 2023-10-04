@@ -20,6 +20,8 @@ signal line_removed
 
 signal next_block_drawed(block_name)
 
+signal board_full
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	blocks[0] = l_block_left
@@ -41,19 +43,14 @@ func _prepare_locked_segments():
 			locked_segments[i].append([])
 			locked_segments[i][j] = null
 
-func _insert_locked_segments(segment):
-	var x = int((segment.position.x + 480) / 64)
-	var y = -int((segment.position.y + 32) / 64)
-	locked_segments[x][y] = segment
-
-func _check_locked_segments():
+func _remove_locked_segments_if_full_lines():
 	for i in range(16):
 		var count = 0
 		for j in range(16):
 			var value = 1 if locked_segments[j][i] != null else 0
 			count += value
 		if count == 16:
-			_remove_filled_line(i)
+			_remove_full_line(i)
 			line_removed.emit() # TODO dodac punkty, wywolac animacje
 			current_speed += 10
 
@@ -82,7 +79,7 @@ func _update_board():
 
 	return false
 
-func _remove_filled_line(line):
+func _remove_full_line(line):
 	for j in range(16):
 		remove_child(locked_segments[j][line])
 		locked_segments[j][line] = null
@@ -99,21 +96,40 @@ func _draw_next_block():
 	next_block_id = randi_range(0, blocks.size() - 1)
 	next_block_drawed.emit(blocks[next_block_id]._bundled.names[0])
 
+func _print_locked_segments():
+	print("---")
+	for i in range(16, 0, -1):
+		var line = ""
+		for j in range(16):
+			var value = "1 " if locked_segments[j][i - 1] != null else "0 "
+			line += value
+		print(line)
+		
 func _on_block_locked():
 	for segment in current_block.segments:
 		var new_segment = locked_segment.instantiate()
-		var diff_position = segment.global_position - current_block.global_position
-		new_segment.position = current_block.position + diff_position
-		_insert_locked_segments(new_segment)
+		new_segment.set_position_by_idx(segment.pos_x, segment.pos_y)
+		locked_segments[segment.pos_x][segment.pos_y] = new_segment
 		add_child(new_segment)
 
 	remove_child(current_block)
-	
-	_check_locked_segments()
+
+	_print_locked_segments()
+	_remove_locked_segments_if_full_lines()
 	while _update_board(): pass
 
-	# TODO wyzwalane sygnalem po zakonczeniu animacji
-	_activate_current_block()
+	if _is_board_full():
+		board_full.emit()
+	else:
+		# TODO wyzwalane sygnalem po zakonczeniu animacji	
+		_activate_current_block()
+
+func _is_board_full():
+	for row in range(14, 16):
+		for col in range(5, 11):
+			if locked_segments[col][row] != null:
+				return true
+	return false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):

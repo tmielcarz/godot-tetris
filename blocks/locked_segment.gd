@@ -1,0 +1,13 @@
+extends Area2D
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(_delta):
+	pass
+
+func set_position_by_idx(x, y):
+	position.x = (x - 7) * 64 - 32
+	position.y = y * -64 - 32

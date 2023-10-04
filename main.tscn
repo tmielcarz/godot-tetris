@@ -14,6 +14,7 @@ position = Vector2(1000, 1100)
 
 [connection signal="game_paused_change" from="." to="Board" method="_on_main_game_paused_change"]
 [connection signal="game_paused_change" from="." to="HUD" method="_on_main_game_paused_change"]
+[connection signal="board_full" from="Board" to="HUD" method="_on_board_board_full"]
 [connection signal="line_removed" from="Board" to="." method="_on_board_line_removed"]
 [connection signal="next_block_drawed" from="Board" to="HUD" method="_on_board_next_block_drawed"]
 [connection signal="start_game" from="HUD" to="." method="_on_hud_start_game"]

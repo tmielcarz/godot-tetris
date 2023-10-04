@@ -29,7 +29,6 @@ func _process(delta):
 		if _is_down_allowed():
 			velocity.y += actual_speed * delta
 		else:
-			print("down not allowed")
 			_lock_block()
 
 		if Input.is_action_just_pressed("move_right") && _is_right_allowed():
@@ -45,7 +44,6 @@ func _process(delta):
 
 func _lock_block():
 	locked = true
-	self.position.y = round(self.position.y / 32) * 32
 	block_locked.emit()
 	
 func _is_rotation_valid():

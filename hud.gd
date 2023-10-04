@@ -17,7 +17,6 @@ func _ready():
 	blocks[z_block_left._bundled.names[0]] = z_block_left
 	blocks[i_block._bundled.names[0]] = i_block
 	blocks[square_block._bundled.names[0]] = square_block
-	$PauseLabel.hide()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
@@ -41,7 +40,10 @@ func _on_board_next_block_drawed(block_name):
 
 func _on_main_game_paused_change(state):
 	if state:
-		$PauseLabel.show()
+		$MessageLabel.text = "PAUSED"
 	else:
-		$PauseLabel.hide()
+		$MessageLabel.text = ""
 		
+
+func _on_board_board_full():
+	$MessageLabel.text = "GAME OVER"
