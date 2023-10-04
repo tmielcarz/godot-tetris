@@ -1,5 +1,5 @@
 # godot-tetris
 
-!(/screenshots/1.png)
+![screenshot 1](/screenshots/1.png)
 
-!(/screenshots/2.png)
+![screenshot 2](/screenshots/2.png)
