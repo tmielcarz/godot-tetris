@@ -1,10 +1,12 @@
-[gd_scene load_steps=17 format=3 uid="uid://bv6jl0eqjak4n"]
+[gd_scene load_steps=19 format=3 uid="uid://bv6jl0eqjak4n"]
 
 [ext_resource type="Script" path="res://board.gd" id="1_bmftx"]
 [ext_resource type="PackedScene" uid="uid://bdglbdtnc0v8e" path="res://blocks/locked_segment.tscn" id="2_h12aj"]
 [ext_resource type="PackedScene" uid="uid://d3lxiec8frvuy" path="res://blocks/l_block_left.tscn" id="2_nww57"]
 [ext_resource type="PackedScene" uid="uid://bscjijut321pq" path="res://blocks/z_block_left.tscn" id="3_5ispg"]
+[ext_resource type="PackedScene" uid="uid://c4hu40kpejpnw" path="res://blocks/l_block_right.tscn" id="4_ooml7"]
 [ext_resource type="PackedScene" uid="uid://m2x4umobuv65" path="res://blocks/i_block.tscn" id="4_uc2rf"]
+[ext_resource type="PackedScene" uid="uid://cegspa4o2fj2c" path="res://blocks/z_block_right.tscn" id="6_7wufc"]
 [ext_resource type="PackedScene" uid="uid://c3yj8o1tbgmbp" path="res://blocks/t_block.tscn" id="6_h7h6v"]
 [ext_resource type="PackedScene" uid="uid://6huhus3je8yf" path="res://blocks/square_block.tscn" id="6_ujkpl"]
 
@@ -47,7 +49,9 @@ size = Vector2(32, 1024)
 script = ExtResource("1_bmftx")
 locked_segment = ExtResource("2_h12aj")
 l_block_left = ExtResource("2_nww57")
+l_block_right = ExtResource("4_ooml7")
 z_block_left = ExtResource("3_5ispg")
+z_block_right = ExtResource("6_7wufc")
 i_block = ExtResource("4_uc2rf")
 t_block = ExtResource("6_h7h6v")
 square_block = ExtResource("6_ujkpl")

@@ -1,16 +1,20 @@
-[gd_scene load_steps=7 format=3 uid="uid://co2wsjk020yrv"]
+[gd_scene load_steps=9 format=3 uid="uid://co2wsjk020yrv"]
 
 [ext_resource type="Script" path="res://hud.gd" id="1_1dae4"]
 [ext_resource type="PackedScene" uid="uid://d3lxiec8frvuy" path="res://blocks/l_block_left.tscn" id="2_o780w"]
 [ext_resource type="PackedScene" uid="uid://bscjijut321pq" path="res://blocks/z_block_left.tscn" id="3_ic87h"]
+[ext_resource type="PackedScene" uid="uid://c4hu40kpejpnw" path="res://blocks/l_block_right.tscn" id="3_p2luq"]
 [ext_resource type="PackedScene" uid="uid://m2x4umobuv65" path="res://blocks/i_block.tscn" id="4_v14l5"]
+[ext_resource type="PackedScene" uid="uid://cegspa4o2fj2c" path="res://blocks/z_block_right.tscn" id="5_4xob4"]
 [ext_resource type="PackedScene" uid="uid://6huhus3je8yf" path="res://blocks/square_block.tscn" id="5_dwfmb"]
 [ext_resource type="PackedScene" uid="uid://c3yj8o1tbgmbp" path="res://blocks/t_block.tscn" id="5_jb8ss"]
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_1dae4")
 l_block_left = ExtResource("2_o780w")
+l_block_right = ExtResource("3_p2luq")
 z_block_left = ExtResource("3_ic87h")
+z_block_right = ExtResource("5_4xob4")
 i_block = ExtResource("4_v14l5")
 t_block = ExtResource("5_jb8ss")
 square_block = ExtResource("5_dwfmb")

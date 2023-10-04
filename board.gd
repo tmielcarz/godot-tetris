@@ -2,7 +2,9 @@ extends Node2D
 
 @export var locked_segment: PackedScene
 @export var l_block_left: PackedScene
+@export var l_block_right: PackedScene
 @export var z_block_left: PackedScene
+@export var z_block_right: PackedScene
 @export var i_block: PackedScene
 @export var t_block: PackedScene
 @export var square_block: PackedScene
@@ -26,10 +28,12 @@ signal board_full
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	blocks[0] = l_block_left
-	blocks[1] = z_block_left
-	blocks[2] = i_block
-	blocks[3] = t_block
-	blocks[4] = square_block
+	blocks[1] = l_block_right
+	blocks[2] = z_block_left
+	blocks[3] = z_block_right
+	blocks[4] = i_block
+	blocks[5] = t_block
+	blocks[6] = square_block
 
 func start_level():
 	current_speed = 50
